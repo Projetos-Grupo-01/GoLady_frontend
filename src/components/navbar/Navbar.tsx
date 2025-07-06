@@ -18,7 +18,7 @@ function Navbar() {
         
 
         
-        <div className=" font-Mooli">
+        <div className="flex items-center gap-5 font-Mooli">
           <a href="#" className="text-gray-800 hover:text-[#7D0700]">
             Sobre o projeto
           </a>
