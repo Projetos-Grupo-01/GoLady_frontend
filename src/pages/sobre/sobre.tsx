@@ -1,4 +1,4 @@
-import Integrante from '../integrante/Integrante'
+import Integrante from '../../components/integrante/Integrante'
 // Dados dos integrantes da equipe
 const teamMembers = [
   {
