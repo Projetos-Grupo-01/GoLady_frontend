@@ -1,39 +1,42 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom' // Importado useParams
-import type Veiculos from '../../../models/veiculos/Veiculos'
 import { ToastAlerta } from '../../../utils/ToastAlerta'
 import { RotatingLines } from 'react-loader-spinner'
-import { deletar } from '../../../services/service'
+import type { Veiculo } from '../../../models/Veiculo'
+import { buscar, deletar } from '../../../services/Service'
 
 function DeletarVeiculo() {
 	const navigate = useNavigate()
-    const { id } = useParams<{ id: string }>(); // <--- AQUI! Extraindo o 'id' da URL
+	const { id } = useParams<{ id: string }>(); // <--- AQUI! Extraindo o 'id' da URL
 
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 
-	const [veiculos, setVeiculo] = useState<Veiculos>({} as Veiculos)
+	const [veiculos, setVeiculo] = useState<Veiculo>({} as Veiculo)
+
+	async function buscarVeiculoPorId(id: string) {
+		try {
+			await buscar(`/veiculos/${id}`, setVeiculo)
+		} catch (error: any) {
+			if (error.toString().includes(404)) {
+				ToastAlerta('Veículo não encontrado ou já excluído!', "erro");
+				retornar()
+			} else {
+				ToastAlerta('Erro ao Excluir o veículo!', "erro");
+				console.log(error)
+			}
+		}
+	}
 
 	async function deletarVeiculo() {
 		setIsLoading(true)
-
-        // Verificação adicional para garantir que o ID existe antes de tentar deletar
-        if (!id) {
-            ToastAlerta('ID do veículo não encontrado na URL!', "erro");
-            setIsLoading(false);
-            retornar();
-            return;
-        }
 
 		try {
 			await deletar(`/veiculos/${id}`)
 			ToastAlerta('Veiculo excluído com sucesso!', "sucesso")
 		} catch (error: any) {
-            if (error.response && error.response.status === 404) {
-                ToastAlerta('Veículo não encontrado ou já excluído!', "erro");
-            } else {
-                ToastAlerta('Erro ao Excluir o veículo!', "erro");
-            }
-			console.error(error)
+
+			ToastAlerta('Houve algum erro ao carregar o veiculo!', 'erro')
+			console.log(error)
 		}
 
 		setIsLoading(false)
@@ -41,8 +44,22 @@ function DeletarVeiculo() {
 	}
 
 	function retornar() {
-		navigate('/veiculoss')
+		navigate('/')
 	}
+
+	useEffect(() => {
+		if (id !== undefined) {
+			buscarVeiculoPorId(id)
+		} else {
+			setVeiculo({
+				id: undefined,
+				categoria: "",
+				modelo: "",
+				placa: "",
+				velocidadeMedia: 0
+			})
+		}
+	},)
 
 	return (
 		<div className="container w-1/3 mx-auto">
@@ -55,9 +72,9 @@ function DeletarVeiculo() {
 				<header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
 					Veiculo
 				</header>
-              
+
 				<p className="p-8 text-3xl bg-slate-200 h-full">
-					{veiculos.descricao || 'Carregando descrição...'}
+					{veiculos.modelo || 'Carregando descrição...'}
 				</p>
 				<div className="flex">
 					<button

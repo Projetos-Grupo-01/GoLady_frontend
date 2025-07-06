@@ -1,8 +1,8 @@
 import { Link } from "@phosphor-icons/react"
-import type Veiculos from "../../../models/veiculos/Veiculos"
+import type { Veiculo } from "../../../models/Veiculo"
 
 interface CardVeiculosProps{
-    veiculos: Veiculos
+    veiculos: Veiculo
 }
 
 function CardVeiculos({ veiculos }: CardVeiculosProps) {
@@ -11,7 +11,7 @@ function CardVeiculos({ veiculos }: CardVeiculosProps) {
             <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
                 Veiculos
             </header>
-            <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculos.descricao}</p>
+            <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculos.modelo}</p>
 
                 <Link to={`/deletarveiculo/${veiculos.id}`} className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
                     flex items-center justify-center'>
