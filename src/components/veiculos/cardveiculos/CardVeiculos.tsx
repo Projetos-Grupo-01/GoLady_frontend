@@ -1,11 +1,11 @@
 import { Link } from "@phosphor-icons/react"
 import type Veiculos from "../../../models/veiculos/Veiculos"
 
-interface CardTemasProps{
+interface CardVeiculosProps{
     veiculos: Veiculos
 }
 
-function CardVeiculos({ veiculos }: CardTemasProps) {
+function CardVeiculos({ veiculos }: CardVeiculosProps) {
     return (
         <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
             <header className='py-2 px-6 bg-indigo-800 text-white font-bold text-2xl'>
