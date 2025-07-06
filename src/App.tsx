@@ -12,6 +12,7 @@ function App() {
       <Navbar/>
       <div className='flex flex-col'>
         <div className='flex-grow'>
+          <Home/>
 
         </div>
 
