@@ -1,3 +1,5 @@
+import './App.css'
+import ListaViagens from './components/viagens/listaviagens/ListaViagens'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
@@ -8,18 +10,7 @@ import DeletarVeiculos from './components/veiculos/deletarveiculos/DeletarVeicul
 function App() {
   return (
     <>
-        <BrowserRouter>
-          <Navbar />
-          <div className="min-h-[80vh]">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/deletarveiculos" element={<DeletarVeiculos />} />
 
-            </Routes>
-          </div>
-          <Footer />
-        </BrowserRouter>
     </>
   )
 }
