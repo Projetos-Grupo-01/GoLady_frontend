@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { SyncLoader } from 'react-spinners'
 import Categoria from '../../../models/Veiculos'
-// import { listar } from '../../../services/Service'
+import { listar } from '../../../services/service'
 import CardCategorias from '../cardveiculos/CardVeiculos'
 import type Veiculos from '../../../models/veiculos/Veiculos'
 import CardVeiculos from '../cardveiculos/CardVeiculos'
@@ -26,7 +26,7 @@ function ListarVeiculos() {
 
 	useEffect(() => {
 		buscarVeiculos()
-	}, [categorias.length])
+	}, [veiculos.length])
 
 	return (
 		<>
@@ -43,7 +43,7 @@ function ListarVeiculos() {
 			)}
 			<div className="flex justify-center w-full my-4">
 				<div className="container flex flex-col mx-4">
-					{ (!isLoading && categorias.length === 0) && (
+					{ (!isLoading && veiculos.length === 0) && (
 						<span className="my-8 text-3xl text-center">
 							Nenhum veiculo foi
 							encontrado
