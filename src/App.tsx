@@ -1,5 +1,5 @@
 import './App.css'
-import ListaCorridas from './components/corridas/listacorridas/ListaCorridas'
+import ListaViagens from './components/viagens/listaviagens/ListaViagens'
 import Navbar from './components/navbar/Navbar'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      <ListaCorridas/>
+      <ListaViagens/>
     </>
   )
 }
