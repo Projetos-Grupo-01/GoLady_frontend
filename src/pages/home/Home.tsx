@@ -7,14 +7,14 @@ function Home() {
                     {/* Coluna da Esquerda: Texto e Botão */}
                     <div className="flex flex-col items-start md:w-1/2 text-left"> {/* Alinhamento à esquerda para o texto */}
 
-                        <h1 className="text-7xl font-bold mb-4">
+                        <h1 className="font-bold text-7xl font-Mooli mb-4">
                             <span className="text-[#115B69]">Go</span>
                             <span className="text-[#7D0700]">Lady</span>
                         </h1>
-                        <p className="text-3xl text-gray-900 mb-6">
+                        <p className="text-3xl font Mooli text-gray-900 mb-6">
                             Do trabalho ao barzinho, seu trajeto em segurança!
                         </p>
-                        <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-[#115B69] transition duration-300">
+                        <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-[#115B69] transition duration-300 cursor-pointer">
                             Solicite uma viagem
                         </button>
                     </div>
