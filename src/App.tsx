@@ -1,14 +1,24 @@
 import './App.css'
 import ListaViagens from './components/viagens/listaviagens/ListaViagens'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Footer from './components/footer/Footer'
 import Navbar from './components/navbar/Navbar'
+import Home from './pages/home/Home'
+import './App.css'
 
 function App() {
-  
-
   return (
     <>
-      <Navbar/>
-      <ListaViagens/>
+      <BrowserRouter>
+        <Navbar />
+        <div className="min-h-[80vh]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </div>
+        <Footer />
+      </BrowserRouter>
     </>
   )
 }

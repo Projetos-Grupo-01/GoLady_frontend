@@ -1,4 +1,4 @@
-import { UserCircleIcon } from "@phosphor-icons/react"
+import { CarIcon, UserCircleIcon } from "@phosphor-icons/react"
 
 function Navbar() {
   return ( 
@@ -27,6 +27,9 @@ function Navbar() {
           </a>
           <a href="#" className="text-gray-800 hover:text-[#7D0700]">
             <UserCircleIcon size={32} /> 
+          </a>
+          <a href="#" className="text-gray-800 hover:text-[#7D0700]">
+            <CarIcon size={32} />
           </a>
         </div>
       </div>
