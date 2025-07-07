@@ -34,7 +34,6 @@ function DeletarVeiculo() {
 			await deletar(`/veiculos/${id}`)
 			ToastAlerta('Veiculo excluído com sucesso!', "sucesso")
 		} catch (error: any) {
-
 			ToastAlerta('Houve algum erro ao carregar o veiculo!', 'erro')
 			console.log(error)
 		}
@@ -68,23 +67,26 @@ function DeletarVeiculo() {
 				Você tem certeza de que deseja apagar o veiculo a
 				seguir?
 			</p>
-			<div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-				<header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
-					Veiculo
+			<div className='shadow-2xl flex flex-col rounded-2xl overflow-hidden justify-between'>
+				<header className='py-2 px-6 bg-cyan-900 text-white font-bold text-2xl'>
+					Veiculos
 				</header>
 
-				<p className="p-8 text-3xl bg-slate-200 h-full">
-					{veiculos.modelo || 'Carregando descrição...'}
-				</p>
+				<div className="flex flex-col px-8 py-4 bg-zinc-100 gap-1.5">
+					<p className='text-3xl'>{veiculos.modelo}</p>
+					<p className='text-xl'>Categoria: {veiculos.categoria}</p>
+					<p className='text-xl'>Placa: {veiculos.placa}</p>
+				</div>
+
 				<div className="flex">
 					<button
-						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 transition delay-2"
+						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 transition delay-2 cursor-pointer"
 						onClick={retornar}
 					>
 						Não
 					</button>
 					<button
-						className="w-full text-slate-100 bg-cyan-500 transition delay-2
+						className="w-full text-slate-100 bg-cyan-500 transition delay-2  cursor-pointer
                                    hover:bg-cyan-700 flex items-center justify-center"
 						onClick={deletarVeiculo} // Chama a função de deletar
 					>

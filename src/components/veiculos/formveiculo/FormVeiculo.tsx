@@ -5,6 +5,7 @@ import type { Veiculo } from "../../../models/Veiculo";
 
 
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
 function FormVeiculo() {
@@ -22,7 +23,7 @@ function FormVeiculo() {
     try {
       await buscar(`/veiculos/${id}`, setVeiculo)
     } catch (error: any) {
-      alert('Veiculo não encontrada!')
+      ToastAlerta('Veiculo não encontrado!', 'info')
       console.error(error)
       retornar();
     }
@@ -49,11 +50,11 @@ function FormVeiculo() {
       try {
         await atualizar(`/veiculos`, veiculo, setVeiculo)
 
-        alert('Veiculo atualizado com sucesso')
+        ToastAlerta('Veiculo atualizado com sucesso', 'sucesso')
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        alert('Erro ao atualizar o Veiculo')
+        ToastAlerta('Erro ao atualizar o Veiculo', 'erro')
         console.error(error)
       }
 
@@ -61,11 +62,11 @@ function FormVeiculo() {
       try {
         await cadastrar(`/veiculos`, veiculo, setVeiculo)
 
-        alert('Veiculo cadastrado com sucesso')
+        ToastAlerta('Veiculo cadastrado com sucesso', 'sucesso')
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        alert('Erro ao cadastrar o Veiculo')
+        ToastAlerta('Erro ao cadastrar o Veiculo', 'erro')
         console.error(error)
       }
     }

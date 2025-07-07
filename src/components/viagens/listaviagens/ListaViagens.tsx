@@ -2,10 +2,9 @@ import { useEffect, useState } from "react"
 import CardViagens from "../cardviagem/CardViagens"
 import type { Viagem } from "../../../models/Viagem"
 import { ColorRing } from "react-loader-spinner"
-import { buscar, deletar } from "../../../services/service.ts"
+import { buscar, deletar } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta.ts"
 import { useNavigate } from "react-router-dom";
-
 
 function ListaViagens() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
