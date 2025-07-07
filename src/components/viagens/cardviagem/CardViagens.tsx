@@ -17,12 +17,12 @@ function CardViagens({ viagem }: CardViagemProps) {
       <div className="flex flex-col bg-zinc-100 p-4 text-xl">
 
         <div className="flex items-center gap-1 py-0.5">
-          <MapPinIcon size={24} />
-          <p>{viagem.enderecoPartida}</p>
+          <MapPinIcon size={24} className="flex-shrink-0" />
+          <p className="truncate" title={viagem.enderecoPartida}>{viagem.enderecoPartida}</p>
         </div>
         <div className="flex items-center gap-1 py-0.5">
-          <MapPinIcon size={24} color="#7D0700" weight="fill" />
-          <p>{viagem.enderecoChegada}</p>
+          <MapPinIcon size={24} color="#7D0700" weight="fill" className="flex-shrink-0" />
+          <p className="truncate" title={viagem.enderecoPartida}>{viagem.enderecoChegada}</p>
         </div>
 
         <span className="pt-5">{viagem.veiculo?.modelo}</span>
