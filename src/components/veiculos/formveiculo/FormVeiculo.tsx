@@ -2,20 +2,25 @@ import { useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import type { Veiculo } from "../../../models/Veiculo";
-import { atualizar, cadastrar } from "../../../services/Service";
+
+
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
+
 
 function FormVeiculo() {
 
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [veiculos, setVeiculo] = useState<Veiculo>({} as Veiculo);
+
+  const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo);
+
 
   const { id } = useParams<{ id: string }>();
 
   async function buscarPorId(id: string) {
     try {
-      await listar(`/veiculo/${id}`, setVeiculo)
+      await buscar(`/veiculos/${id}`, setVeiculo)
     } catch (error: any) {
       alert('Veiculo não encontrada!')
       console.error(error)
@@ -31,18 +36,18 @@ function FormVeiculo() {
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setVeiculo({
-      ...veiculos,
+      ...veiculo,
       [e.target.name]: e.target.value
     })
   }
 
-  async function gerarNovaCategoria(e: ChangeEvent<HTMLFormElement>) {
+  async function gerarNovoVeiculo(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
     setIsLoading(true)
 
     if (id !== undefined) {
       try {
-        await atualizar(`/veiculos`, veiculos, setVeiculo)
+        await atualizar(`/veiculos`, veiculo, setVeiculo)
 
         alert('Veiculo atualizado com sucesso')
 
@@ -54,7 +59,7 @@ function FormVeiculo() {
 
     } else {
       try {
-        await cadastrar(`/veiculo`, veiculos, setVeiculo)
+        await cadastrar(`/veiculos`, veiculo, setVeiculo)
 
         alert('Veiculo cadastrado com sucesso')
 
@@ -77,26 +82,62 @@ function FormVeiculo() {
   return (
     <div className="container flex flex-col items-center justify-center mx-auto px-2 pt-4">
       <h1 className="text-3xl md:text-4xl text-center my-8">
-        {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}
+        {id === undefined ? 'Cadastrar Veiculo' : 'Editar Veiculo'}
       </h1>
 
       <form className="w-full max-w-md md:max-w-1/2 flex flex-col gap-4 px-2"
-        onSubmit={gerarNovaCategoria}
+        onSubmit={gerarNovoVeiculo}
       >
         <div className="flex flex-col gap-2 ">
           <label htmlFor="categoria">Categoria</label>
           <input
             type="text"
             placeholder="Categoria"
-            name='tipo'
+            name='categoria'
             className="bg-white border-2 border-slate-700 rounded p-2 utral-800 text-base md:text-lg"
             required
-            value={veiculos.tipo}
+            value={veiculo.categoria}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+          />
+        </div>
+        <div className="flex flex-col gap-2 ">
+          <label htmlFor="modelo">Modelo</label>
+          <input
+            type="text"
+            placeholder="Modelo"
+            name='modelo'
+            className="bg-white border-2 border-slate-700 rounded p-2 utral-800 text-base md:text-lg"
+            required
+            value={veiculo.modelo}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+          />
+        </div>
+        <div className="flex flex-col gap-2 ">
+          <label htmlFor="placa">Placa</label>
+          <input
+            type="text"
+            placeholder="Placa"
+            name='placa'
+            className="bg-white border-2 border-slate-700 rounded p-2 utral-800 text-base md:text-lg"
+            required
+            value={veiculo.placa}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+          />
+        </div>
+        <div className="flex flex-col gap-2 ">
+          <label htmlFor="velocidadeMedia">Velocidade Média</label>
+          <input
+            type="text"
+            placeholder="Velocidade Média"
+            name='velocidadeMedia'
+            className="bg-white border-2 border-slate-700 rounded p-2 utral-800 text-base md:text-lg"
+            required
+            value={veiculo.velocidadeMedia}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
         <button
-          className="rounded text-slate-100 bg-slate-400 
+          className="rounded text-slate-100 bg-slate-400 mb-11 cursor-pointer transition delay-2
           hover:bg-slate-800 w-full md:w-1/2 py-2 mx-auto flex justify-center text-base md:text-lg"
           type="submit"
         >
