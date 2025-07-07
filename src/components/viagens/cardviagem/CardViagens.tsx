@@ -1,6 +1,8 @@
 
-import { MapPinIcon, PencilSimple, Trash } from "@phosphor-icons/react";
+import { MapPinIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 import type { Viagem } from "../../../models/Viagem";
+import ModalViagem from "../modalviagem/ModalViagem";
+import { useState } from "react";
 
 interface CardViagemProps {
   viagem: Viagem;
@@ -9,8 +11,15 @@ interface CardViagemProps {
 }
 
 function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
+  const [modalAberto, setModalAberto] = useState(false);
+  const abrirModal = () => setModalAberto(true);
+  const fecharModal = () => setModalAberto(false);
   return (
-    <div className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-2xl m-4 shadow-black/50">
+    <>
+    <div
+        className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-2xl m-4 shadow-black/50 cursor-pointer"
+        onClick={abrirModal}
+      >
       <header className="bg-cyan-900 text-white py-4 px-5">
         {new Intl.DateTimeFormat(undefined, {
           dateStyle: "full",
@@ -53,7 +62,7 @@ function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
             onClick={() => onUpdate(viagem.id!)}
             className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-cyan-900 hover:bg-cyan-700 text-white rounded-md text-sm font-semibold"
           >
-            <PencilSimple size={20} />
+            <PencilSimpleIcon size={20} />
             Atualizar
           </button>
 
@@ -61,14 +70,14 @@ function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
             onClick={() => onDelete(viagem.id!)}
             className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-red-900 hover:bg-red-600 text-white rounded-md text-sm font-semibold"
           >
-            <Trash size={20} />
+            <TrashIcon size={20} />
             Deletar
           </button>
         </div>
       </div>
     </div>
-
-        
+    <ModalViagem isOpen={modalAberto} viagem={viagem} onClose={fecharModal} />
+   </>     
   );
 }
 
