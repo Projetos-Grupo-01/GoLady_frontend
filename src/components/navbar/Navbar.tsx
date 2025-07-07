@@ -19,7 +19,7 @@ function Navbar() {
 
 
         <div className="flex items-center gap-5 font-Mooli">
-          <Link to="/sobre" className="text-gray-800 hover:text-[#7D0700]">
+          <Link to="/projeto" className="text-gray-800 hover:text-[#7D0700]">
             Sobre o projeto
           </Link>
           <Link to="/sobre" className="text-gray-800 hover:text-[#7D0700]">

@@ -69,9 +69,9 @@ const teamMembers = [
 
 function Sobre() {
   return (
-    <section className="py-3 bg-gray-50">
+    <section className="py-3 bg-gray-50 mb-10">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 font-Mooli">Pessoas que fizeram acontecer</h2>
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 font-Mooli mt-7">Pessoas que fizeram acontecer</h2>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center">
           {teamMembers.map((member) => (
