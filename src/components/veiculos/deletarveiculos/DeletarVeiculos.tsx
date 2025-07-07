@@ -44,7 +44,7 @@ function DeletarVeiculo() {
 	}
 
 	function retornar() {
-		navigate('/')
+		navigate('/veiculos')
 	}
 
 	useEffect(() => {
@@ -63,7 +63,7 @@ function DeletarVeiculo() {
 
 	return (
 		<div className="container w-1/3 mx-auto">
-			<h1 className="text-4xl text-center my-4">Deletar veiculos</h1>
+			<h1 className="text-4xl text-center my-4">Deletar veiculo</h1>
 			<p className="text-center font-semibold mb-4">
 				Você tem certeza de que deseja apagar o veiculo a
 				seguir?
@@ -78,14 +78,14 @@ function DeletarVeiculo() {
 				</p>
 				<div className="flex">
 					<button
-						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
+						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 transition delay-2"
 						onClick={retornar}
 					>
 						Não
 					</button>
 					<button
-						className="w-full text-slate-100 bg-indigo-400 
-                                   hover:bg-indigo-600 flex items-center justify-center"
+						className="w-full text-slate-100 bg-cyan-500 transition delay-2
+                                   hover:bg-cyan-700 flex items-center justify-center"
 						onClick={deletarVeiculo} // Chama a função de deletar
 					>
 						{isLoading ? (

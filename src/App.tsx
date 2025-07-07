@@ -5,9 +5,11 @@ import './App.css'
 import DeletarVeiculos from './components/veiculos/deletarveiculos/DeletarVeiculos'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/footer/Footer'
-import CadastroViagem from './components/cadastroviagem/CadastroViagem'
+import CadastroViagem from './components/viagens/cadastroviagem/CadastroViagem'
 import Sobre from './pages/sobre/sobre'
 import { ToastContainer } from 'react-toastify'
+import ListarVeiculos from './components/veiculos/listarveiculos/ListarVeiculos'
+import FormVeiculo from './components/veiculos/formveiculo/FormVeiculo'
 
 function App() {
   return (
@@ -21,7 +23,11 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
 
+
+            <Route path="/veiculos" element={<ListarVeiculos />} />
             <Route path="/deletarveiculo/:id" element={<DeletarVeiculos />} />
+            <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
+            <Route path="/atualizarveiculo/:id" element={<FormVeiculo />} />
 
             <Route path="/cadastrarviagem" element={<CadastroViagem />} />
 
