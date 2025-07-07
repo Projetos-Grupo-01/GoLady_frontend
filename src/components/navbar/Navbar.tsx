@@ -29,7 +29,7 @@ function Navbar() {
           <Link to="#" >
             <UserCircleIcon size={32} className="text-gray-800 hover:text-[#7D0700]" />
           </Link>
-          <Link to="#" className="text-gray-800 hover:text-[#7D0700]">
+          <Link to="/veiculos" className="text-gray-800 hover:text-[#7D0700]">
             <CarIcon size={32} />
           </Link>
         </div>

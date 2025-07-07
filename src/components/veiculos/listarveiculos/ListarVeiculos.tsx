@@ -1,21 +1,19 @@
 import { useEffect, useState } from 'react'
 import { SyncLoader } from 'react-spinners'
-import Categoria from '../../../models/Veiculos'
-import { listar } from '../../../services/service'
-import CardCategorias from '../cardveiculos/CardVeiculos'
-import type Veiculos from '../../../models/veiculos/Veiculos'
+import { buscar } from '../../../services/Service'
 import CardVeiculos from '../cardveiculos/CardVeiculos'
+import type { Veiculo } from '../../../models/Veiculo'
 
 function ListarVeiculos() {
 	
-    const [veiculos, setVeiculos] = useState<Veiculos[]>([])
+    const [veiculos, setVeiculos] = useState<Veiculo[]>([])
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 
 	async function buscarVeiculos() {
         setIsLoading(true)
 
         try{
-            await listar('/veiculos', setVeiculos)
+            await buscar('/veiculos', setVeiculos)
         }catch(error: any){
             console.log("Erro ao listar os Veiculos!")
         }finally{
