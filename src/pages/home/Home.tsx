@@ -3,7 +3,7 @@ import ListaViagens from "../../components/viagens/listaviagens/ListaViagens";
 function Home() {
     return (
         <>
-            <div className="relative w-full h-[400px] bg-white drop-shadow-lg overflow-hidden"> 
+            <div className="mt-4 relative w-full h-[400px] bg-white drop-shadow-lg overflow-hidden"> 
                 {/* div principal definida com altura fixa ou min-height (ajuste se desejar altura maior ou responsiva) */}
                 
                 {/* Conteúdo à esquerda */}

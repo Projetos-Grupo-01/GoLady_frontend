@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 function Navbar() {
   return (
     <>
-      <nav className="py-4 px-9 w-full flex justify-between items-center drop-shadow-xl mb-4" style={{
+      <nav className="py-4 px-9 w-full flex justify-between items-center drop-shadow-xl" style={{
         background: "linear-gradient(90deg, rgba(250,211,196,1) 0%, rgba(255,255,255,1) 54%, rgba(187,213,204,1) 97%)"
       }} >
 
@@ -19,7 +19,7 @@ function Navbar() {
 
 
         <div className="flex items-center gap-5 font-Mooli">
-          <Link to="/sobre" className="text-gray-800 hover:text-[#7D0700]">
+          <Link to="/projeto" className="text-gray-800 hover:text-[#7D0700]">
             Sobre o projeto
           </Link>
           <Link to="/sobre" className="text-gray-800 hover:text-[#7D0700]">

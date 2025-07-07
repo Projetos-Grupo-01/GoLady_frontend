@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer'
 import CadastroViagem from './components/cadastroviagem/CadastroViagem'
 import Sobre from './pages/sobre/sobre'
 import { ToastContainer } from 'react-toastify'
+import Projeto from './pages/projeto/Projeto'
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
-
+            <Route path="/projeto" element={<Projeto />} />
             <Route path="/deletarveiculo/:id" element={<DeletarVeiculos />} />
 
             <Route path="/cadastrarviagem" element={<CadastroViagem />} />
