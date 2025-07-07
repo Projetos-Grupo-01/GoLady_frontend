@@ -3,6 +3,7 @@ import CardViagens from "../cardviagem/CardViagens"
 import type { Viagem } from "../../../models/Viagem"
 import { ColorRing } from "react-loader-spinner"
 import { buscar } from "../../../services/Service"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 
 function ListaViagens() {
@@ -19,7 +20,7 @@ function ListaViagens() {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      alert('Houve um erro ao carregar as viagens')
+      ToastAlerta('Houve um erro ao carregar as viagens', 'erro')
       console.log(error)
     } finally {
       setIsLoading(false)
