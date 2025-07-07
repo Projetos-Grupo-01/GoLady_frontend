@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import CardViagens from "../cardviagem/CardViagens"
-import { buscar } from "../../../services/Service"
 import type { Viagem } from "../../../models/Viagem"
 import { ColorRing } from "react-loader-spinner"
+import { buscar } from "../../../services/Service"
 
 
 function ListaViagens() {
@@ -17,6 +17,7 @@ function ListaViagens() {
 
       await buscar('/viagens', setViagens)
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       alert('Houve um erro ao carregar as viagens')
       console.log(error)

@@ -4,6 +4,7 @@ import ListaViagens from "../../components/viagens/listaviagens/ListaViagens";
 function Home() {
     return (
         <>
+
             <div className="mt-4 relative w-full h-[400px] bg-white drop-shadow-lg overflow-hidden"> 
                 {/* div principal definida com altura fixa ou min-height (ajuste se desejar altura maior ou responsiva) */}
                 
@@ -16,9 +17,10 @@ function Home() {
                     <p className="text-3xl text-gray-900 mb-6 text-shadow-lg/10">
                         Do trabalho ao barzinho, seu trajeto em segurança!
                     </p>
-                    <Link to="" className="px-8 py-3 bg-[#115B69] text-white font-semibold rounded-lg shadow-md hover:bg-[#7d0600ce] transition duration-300 cursor-pointer">
+                    <Link to="/viagens/formulario" className="px-8 py-3 bg-[#115B69] text-white font-semibold rounded-lg shadow-md hover:bg-[#7d0600ce] transition duration-300 cursor-pointer">
                         Solicite uma viagem
                     </Link>
+
                 </div>
 
                 {/* Imagem encostada à direita */}
