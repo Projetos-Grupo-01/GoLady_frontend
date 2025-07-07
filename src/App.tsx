@@ -1,7 +1,6 @@
 import './App.css'
 import Navbar from './components/navbar/Navbar'
 import Home from './pages/home/Home'
-import './App.css'
 import DeletarVeiculos from './components/veiculos/deletarveiculos/DeletarVeiculos'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/footer/Footer'
@@ -12,9 +11,6 @@ import FormViagem from './components/viagens/formviagem/FormViagem'
 import ListarVeiculos from './components/veiculos/listarveiculos/ListarVeiculos'
 import FormVeiculo from './components/veiculos/formveiculo/FormVeiculo'
 import Projeto from './pages/projeto/Projeto'
-import CadastroViagem from './components/cadastroviagem/CadastroViagem'
-
-
 
 function App() {
   return (
