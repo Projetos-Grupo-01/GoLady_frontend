@@ -7,11 +7,11 @@ interface CardViagemProps {
 
 function CardViagens({ viagem }: CardViagemProps) {
   return (
-    <div className="flex flex-col justify-between rounded-2xl overflow-hidden">
+    <div className="flex flex-col justify-between rounded-2xl overflow-hidden shadow-2xl m-4 shadow-black/50">
       <header className="bg-cyan-900 text-white py-4 px-5">
         {new Intl.DateTimeFormat(undefined, {
           dateStyle: 'full',
-          timeStyle: 'medium'
+          timeStyle: 'short'
         }).format(new Date(viagem.horariodesaida))}
       </header>
       <div className="flex flex-col bg-zinc-100 p-4 text-xl">
@@ -26,7 +26,12 @@ function CardViagens({ viagem }: CardViagemProps) {
         </div>
 
         <span className="pt-5">{viagem.veiculo?.modelo}</span>
-        <p className="font-bold text-2xl">R$ {viagem.preco}</p>
+        <p className="font-bold text-2xl">
+        {new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL",
+        }).format(viagem.preco)}
+      </p>
       </div>
     </div>
   )
