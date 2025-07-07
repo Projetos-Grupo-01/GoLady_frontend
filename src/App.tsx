@@ -8,6 +8,7 @@ import Footer from './components/footer/Footer'
 import CadastroViagem from './components/cadastroviagem/CadastroViagem'
 import Sobre from './pages/sobre/sobre'
 import { ToastContainer } from 'react-toastify'
+import FormViagem from './components/viagens/formviagem/FormViagem'
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
             <Route path="/deletarveiculo/:id" element={<DeletarVeiculos />} />
 
             <Route path="/cadastrarviagem" element={<CadastroViagem />} />
+            <Route path="/viagens/formulario" element={<FormViagem />} />
+            <Route path="/viagens/formulario/:id" element={<FormViagem />} />
+
 
           </Routes>
         </div>

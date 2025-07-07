@@ -1,14 +1,15 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Veiculos from "../../../models/Veiculos";
 import { ClipLoader } from "react-spinners";
+import type { Veiculo } from "../../../models/Veiculo";
+import { atualizar, cadastrar } from "../../../services/Service";
 
 function FormVeiculo() {
 
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [veiculos, setVeiculo] = useState<Veiculos>({} as Veiculos);
+  const [veiculos, setVeiculo] = useState<Veiculo>({} as Veiculo);
 
   const { id } = useParams<{ id: string }>();
 
@@ -45,6 +46,7 @@ function FormVeiculo() {
 
         alert('Veiculo atualizado com sucesso')
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         alert('Erro ao atualizar o Veiculo')
         console.error(error)
@@ -56,6 +58,7 @@ function FormVeiculo() {
 
         alert('Veiculo cadastrado com sucesso')
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         alert('Erro ao cadastrar o Veiculo')
         console.error(error)

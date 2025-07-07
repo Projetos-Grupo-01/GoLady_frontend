@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ListaViagens from "../../components/viagens/listaviagens/ListaViagens";
 
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
                             Do trabalho ao barzinho, seu trajeto em segurança!
                         </p>
                         <button className="px-8 py-3 bg-teal-600 text-white font-semibold rounded-lg shadow-md hover:bg-[#115B69] transition duration-300 cursor-pointer">
-                            Solicite uma viagem
+                            <Link to='/viagens/formulario' >Solicite uma viagem</Link>
                         </button>
                     </div>
                     
