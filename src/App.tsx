@@ -5,7 +5,6 @@ import './App.css'
 import DeletarVeiculos from './components/veiculos/deletarveiculos/DeletarVeiculos'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/footer/Footer'
-import CadastroViagem from './components/viagens/cadastroviagem/CadastroViagem'
 import Sobre from './pages/sobre/sobre'
 import { ToastContainer } from 'react-toastify'
 
@@ -13,6 +12,7 @@ import FormViagem from './components/viagens/formviagem/FormViagem'
 import ListarVeiculos from './components/veiculos/listarveiculos/ListarVeiculos'
 import FormVeiculo from './components/veiculos/formveiculo/FormVeiculo'
 import Projeto from './pages/projeto/Projeto'
+import CadastroViagem from './components/cadastroviagem/CadastroViagem'
 
 
 
@@ -37,6 +37,7 @@ function App() {
             <Route path="/cadastrarviagem" element={<CadastroViagem />} />
             <Route path="/viagens/formulario" element={<FormViagem />} />
             <Route path="/viagens/formulario/:id" element={<FormViagem />} />
+            <Route path="/editar/viagem/:id" element={<FormViagem />} />
 
 
           </Routes>
