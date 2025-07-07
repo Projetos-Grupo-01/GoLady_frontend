@@ -12,9 +12,6 @@ import FormViagem from './components/viagens/formviagem/FormViagem'
 import ListarVeiculos from './components/veiculos/listarveiculos/ListarVeiculos'
 import FormVeiculo from './components/veiculos/formveiculo/FormVeiculo'
 import Projeto from './pages/projeto/Projeto'
-import CadastroViagem from './components/cadastroviagem/CadastroViagem'
-
-
 
 function App() {
   return (
