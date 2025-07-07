@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Veiculo } from "../../../models/Veiculo";
-import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { atualizar, buscar, cadastrar } from "../../../services/service";
 import type { Viagem } from "../../../models/Viagem";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type { Usuario } from "../../../models/Usuario";
 
-const FormularioViagem = () => {
+const FormViagem = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -61,11 +61,12 @@ const FormularioViagem = () => {
         await cadastrar("/viagens", viagem, setViagem);
         ToastAlerta("Viagem cadastrada com sucesso!", "sucesso");
       }
-      navigate("/viagens");
+      navigate("/");
     } catch {
       ToastAlerta("Erro ao salvar viagem", "erro");
     }
   };
+  
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">
@@ -169,4 +170,4 @@ const FormularioViagem = () => {
   );
 };
 
-export default FormularioViagem;
+export default FormViagem;

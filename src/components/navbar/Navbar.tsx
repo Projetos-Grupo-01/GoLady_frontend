@@ -25,6 +25,9 @@ function Navbar() {
           <Link to="/sobre" className="text-gray-800 hover:text-[#7D0700]">
             Sobre a equipe
           </Link>
+          <Link to="/cadastrarveiculo" className="text-gray-800 hover:text-[#7D0700]">
+            Cadastrar Veículo
+          </Link>
 
           <Link to="#" >
             <UserCircleIcon size={32} className="text-gray-800 hover:text-[#7D0700]" />
