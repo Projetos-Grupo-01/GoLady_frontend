@@ -1,3 +1,4 @@
+
 import { MapPinIcon, PencilSimple, Trash } from "@phosphor-icons/react";
 import type { Viagem } from "../../../models/Viagem";
 
@@ -40,6 +41,7 @@ function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
         <span className="pt-5">{viagem.veiculo?.modelo}</span>
 
         <p className="font-bold text-2xl">
+
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
@@ -65,6 +67,8 @@ function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
         </div>
       </div>
     </div>
+
+        
   );
 }
 

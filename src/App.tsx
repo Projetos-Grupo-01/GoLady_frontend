@@ -34,7 +34,6 @@ function App() {
             <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
             <Route path="/atualizarveiculo/:id" element={<FormVeiculo />} />
 
-            <Route path="/cadastrarviagem" element={<CadastroViagem />} />
             <Route path="/viagens/formulario" element={<FormViagem />} />
             <Route path="/viagens/formulario/:id" element={<FormViagem />} />
             <Route path="/editar/viagem/:id" element={<FormViagem />} />
