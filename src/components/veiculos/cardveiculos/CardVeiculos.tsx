@@ -19,11 +19,11 @@ function CardVeiculos({ veiculos }: CardVeiculosProps) {
             </div>
 
             <div className="flex">
-                <Link to={`/deletarveiculo/${veiculos.id}`} className='text-slate-100 bg-red-400 hover:bg-red-700 w-full 
+                <Link to={`/deletarveiculo/${veiculos.id}`} className='text-slate-100 bg-red-900 hover:bg-red-600 w-full 
                     flex items-center justify-center transition delay-2 py-2'>
                     Deletar
                 </Link>
-                <Link to={`/atualizarveiculo/${veiculos.id}`} className='text-slate-100 bg-cyan-500 hover:bg-cyan-700 w-full 
+                <Link to={`/atualizarveiculo/${veiculos.id}`} className='text-slate-100 bg-cyan-900 hover:bg-cyan-700 w-full 
                     flex items-center justify-center transition delay-2'>
                     Alterar
                 </Link>
