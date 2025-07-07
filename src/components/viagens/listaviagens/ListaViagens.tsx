@@ -44,7 +44,7 @@ function ListaViagens() {
       )
 
       }
-      <div className="flex justify-center w-full p-4 bg-[#d7d7d793]">
+      <div className="flex justify-center w-full p-8 bg-[#d7d7d793]">
         <div className="container flex flex-col mx-2">
 
           {
