@@ -52,7 +52,7 @@ Navegação entre páginas com React Router
 ## 3. 🎨 Protótipo no Figma
 Confira o protótipo da interface no Figma:
 
-🔗 [**Figma**](https://www.figma.com/proto/pZ68VIVqhhnYbU7UAyKO7X/Garfo-Go?node-id=0-1&t=U9vzB2rp0YDSRDux-1)
+🔗 [**Figma**](https://www.figma.com/design/Q3wQbJJuAX993NGQpVEh81/GoLady?node-id=0-1&p=f&t=6AEYuwVswHIG8hKc-0)
 
 
 
