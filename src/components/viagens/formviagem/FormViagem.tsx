@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Veiculo } from "../../../models/Veiculo";
-import { atualizar, buscar, cadastrar } from "../../../services/service";
 import type { Viagem } from "../../../models/Viagem";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type { Usuario } from "../../../models/Usuario";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
 
 const FormViagem = () => {
   const navigate = useNavigate();
