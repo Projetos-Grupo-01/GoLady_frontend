@@ -80,14 +80,14 @@ function DeletarVeiculo() {
 
 				<div className="flex">
 					<button
-						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 transition delay-2 cursor-pointer"
+						className="text-slate-100 bg-red-900 hover:bg-red-600 w-full py-2 transition delay-2 cursor-pointer"
 						onClick={retornar}
 					>
 						Não
 					</button>
 					<button
-						className="w-full text-slate-100 bg-cyan-500 transition delay-2  cursor-pointer
-                                   hover:bg-cyan-700 flex items-center justify-center"
+						className="w-full text-slate-100 bg-cyan-900 hover:bg-cyan-700 transition delay-2  cursor-pointer
+                                	flex items-center justify-center"
 						onClick={deletarVeiculo} // Chama a função de deletar
 					>
 						{isLoading ? (
