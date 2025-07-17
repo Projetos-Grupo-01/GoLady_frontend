@@ -1,39 +1,41 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom' // Importado useParams
-import type Veiculos from '../../../models/veiculos/Veiculos'
 import { ToastAlerta } from '../../../utils/ToastAlerta'
 import { RotatingLines } from 'react-loader-spinner'
-import { deletar } from '../../../services/service'
+import type { Veiculo } from '../../../models/Veiculo'
+import { buscar, deletar } from '../../../services/Service'
 
 function DeletarVeiculo() {
 	const navigate = useNavigate()
-    const { id } = useParams<{ id: string }>(); // <--- AQUI! Extraindo o 'id' da URL
+	const { id } = useParams<{ id: string }>(); // <--- AQUI! Extraindo o 'id' da URL
 
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 
-	const [veiculos, setVeiculo] = useState<Veiculos>({} as Veiculos)
+	const [veiculos, setVeiculo] = useState<Veiculo>({} as Veiculo)
+
+	async function buscarVeiculoPorId(id: string) {
+		try {
+			await buscar(`/veiculos/${id}`, setVeiculo)
+		} catch (error: any) {
+			if (error.toString().includes(404)) {
+				ToastAlerta('Veículo não encontrado ou já excluído!', "erro");
+				retornar()
+			} else {
+				ToastAlerta('Erro ao Excluir o veículo!', "erro");
+				console.log(error)
+			}
+		}
+	}
 
 	async function deletarVeiculo() {
 		setIsLoading(true)
-
-        // Verificação adicional para garantir que o ID existe antes de tentar deletar
-        if (!id) {
-            ToastAlerta('ID do veículo não encontrado na URL!', "erro");
-            setIsLoading(false);
-            retornar();
-            return;
-        }
 
 		try {
 			await deletar(`/veiculos/${id}`)
 			ToastAlerta('Veiculo excluído com sucesso!', "sucesso")
 		} catch (error: any) {
-            if (error.response && error.response.status === 404) {
-                ToastAlerta('Veículo não encontrado ou já excluído!', "erro");
-            } else {
-                ToastAlerta('Erro ao Excluir o veículo!', "erro");
-            }
-			console.error(error)
+			ToastAlerta('Houve algum erro ao carregar o veiculo!', 'erro')
+			console.log(error)
 		}
 
 		setIsLoading(false)
@@ -41,34 +43,51 @@ function DeletarVeiculo() {
 	}
 
 	function retornar() {
-		navigate('/veiculoss')
+		navigate('/veiculos')
 	}
+
+	useEffect(() => {
+		if (id !== undefined) {
+			buscarVeiculoPorId(id)
+		} else {
+			setVeiculo({
+				id: undefined,
+				categoria: "",
+				modelo: "",
+				placa: "",
+				velocidadeMedia: 0
+			})
+		}
+	},)
 
 	return (
 		<div className="container w-1/3 mx-auto">
-			<h1 className="text-4xl text-center my-4">Deletar veiculos</h1>
+			<h1 className="text-4xl text-center my-4">Deletar veiculo</h1>
 			<p className="text-center font-semibold mb-4">
 				Você tem certeza de que deseja apagar o veiculo a
 				seguir?
 			</p>
-			<div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-				<header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
-					Veiculo
+			<div className='shadow-2xl flex flex-col rounded-2xl overflow-hidden justify-between'>
+				<header className='py-2 px-6 bg-cyan-900 text-white font-bold text-2xl'>
+					Veiculos
 				</header>
-              
-				<p className="p-8 text-3xl bg-slate-200 h-full">
-					{veiculos.descricao || 'Carregando descrição...'}
-				</p>
+
+				<div className="flex flex-col px-8 py-4 bg-zinc-100 gap-1.5">
+					<p className='text-3xl'>{veiculos.modelo}</p>
+					<p className='text-xl'>Categoria: {veiculos.categoria}</p>
+					<p className='text-xl'>Placa: {veiculos.placa}</p>
+				</div>
+
 				<div className="flex">
 					<button
-						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
+						className="text-slate-100 bg-red-900 hover:bg-red-600 w-full py-2 transition delay-2 cursor-pointer"
 						onClick={retornar}
 					>
 						Não
 					</button>
 					<button
-						className="w-full text-slate-100 bg-indigo-400 
-                                   hover:bg-indigo-600 flex items-center justify-center"
+						className="w-full text-slate-100 bg-cyan-900 hover:bg-cyan-700 transition delay-2  cursor-pointer
+                                	flex items-center justify-center"
 						onClick={deletarVeiculo} // Chama a função de deletar
 					>
 						{isLoading ? (
