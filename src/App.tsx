@@ -11,6 +11,7 @@ import FormViagem from './components/viagens/formviagem/FormViagem'
 import ListarVeiculos from './components/veiculos/listarveiculos/ListarVeiculos'
 import FormVeiculo from './components/veiculos/formveiculo/FormVeiculo'
 import Projeto from './pages/projeto/Projeto'
+import Login from './pages/login/Login'
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Navbar />
         <div className="min-h-[80vh]">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/projeto" element={<Projeto />} />
