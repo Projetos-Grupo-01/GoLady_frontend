@@ -14,12 +14,12 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: AuthProviderProps) {
+  
   const [usuario, setUsuario] = useState<UsuarioLogin>({
-    id: undefined,
+    id: 0,
     nome: "",
     usuario: "",
     senha: "",
@@ -39,7 +39,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       ToastAlerta("O Usuário foi autenticado com sucesso!", "sucesso");
     } catch (error) {
       ToastAlerta("O dados do Usuário estão incorretos", "erro");
-      console.error(error);
     }
 
     setIsLoading(false);
@@ -47,7 +46,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   function handleLogout() {
     setUsuario({
-      id: undefined,
+      id: 0,
       nome: "",
       usuario: "",
       senha: "",

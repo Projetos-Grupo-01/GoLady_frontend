@@ -1,4 +1,4 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import type { Veiculo } from "../../../models/Veiculo";
@@ -6,6 +6,7 @@ import type { Veiculo } from "../../../models/Veiculo";
 
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 
 function FormVeiculo() {
@@ -16,12 +17,19 @@ function FormVeiculo() {
 
   const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo);
 
+  const { usuario } = useContext(AuthContext)
+  const token = usuario.token
+
 
   const { id } = useParams<{ id: string }>();
 
   async function buscarPorId(id: string) {
     try {
-      await buscar(`/veiculos/${id}`, setVeiculo)
+      await buscar(`/veiculos/${id}`, setVeiculo, {
+        headers: {
+          Authorization: token
+        }
+      })
     } catch (error: any) {
       ToastAlerta('Veiculo não encontrado!', 'info')
       console.error(error)
@@ -48,11 +56,14 @@ function FormVeiculo() {
 
     if (id !== undefined) {
       try {
-        await atualizar(`/veiculos`, veiculo, setVeiculo)
-
+        await atualizar(`/veiculos`, veiculo, setVeiculo, {
+          headers: {
+            Authorization: token
+          }
+        })
         ToastAlerta('Veiculo atualizado com sucesso', 'sucesso')
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         ToastAlerta('Erro ao atualizar o Veiculo', 'erro')
         console.error(error)
@@ -60,11 +71,15 @@ function FormVeiculo() {
 
     } else {
       try {
-        await cadastrar(`/veiculos`, veiculo, setVeiculo)
+        await cadastrar(`/veiculos`, veiculo, setVeiculo, {
+          headers: {
+            Authorization: token
+          }
+        })
 
         ToastAlerta('Veiculo cadastrado com sucesso', 'sucesso')
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         ToastAlerta('Erro ao cadastrar o Veiculo', 'erro')
         console.error(error)
@@ -75,6 +90,13 @@ function FormVeiculo() {
     retornar();
 
   }
+
+  useEffect(() => {
+    if (token === "") {
+      ToastAlerta('Você precisa estar logado', 'info')
+      navigate('/')
+    }
+  }, [token])
 
   function retornar() {
     navigate("/veiculos")
@@ -144,9 +166,9 @@ function FormVeiculo() {
         >
           {isLoading ?
             <ClipLoader
-            color="#ffffff"
-            size={24}
-          />
+              color="#ffffff"
+              size={24}
+            />
             :
             <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
           }

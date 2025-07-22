@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import CardViagens from "../cardviagem/CardViagens"
 import type { Viagem } from "../../../models/Viagem"
 import { ColorRing } from "react-loader-spinner"
 import { buscar, deletar } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta.ts"
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext.tsx"
 
 function ListaViagens() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -12,16 +13,22 @@ function ListaViagens() {
 
   const navigate = useNavigate();
 
-const handleUpdate = (id: number) => {
-  navigate(`/editar/viagem/${id}`);
-};
+  const handleUpdate = (id: number) => {
+    navigate(`/editar/viagem/${id}`);
+  };
 
+  const { usuario } = useContext(AuthContext)
+  const token = usuario.token
 
   async function buscarViagens() {
     try {
       setIsLoading(true)
-      await buscar('/viagens', setViagens)
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await buscar('/viagens', setViagens, {
+        headers: {
+          Authorization: token
+        }
+      })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       ToastAlerta('Houve um erro ao carregar as viagens', 'erro')
       console.log(error)
@@ -39,7 +46,11 @@ const handleUpdate = (id: number) => {
     if (!confirmacao) return;
 
     try {
-      await deletar(`/viagens/${id}`);
+      await deletar(`/viagens/${id}`, {
+        headers: {
+          Authorization: token
+        }
+      });
       ToastAlerta("Viagem deletada com sucesso!", "sucesso");
       setViagens(viagens.filter((v) => v.id !== id));
     } catch (error) {
@@ -47,6 +58,13 @@ const handleUpdate = (id: number) => {
       console.error(error);
     }
   }
+
+  useEffect(() => {
+    if (token === "") {
+      ToastAlerta('Você precisa estar logado', 'info')
+      navigate('/')
+    }
+  }, [token])
 
   return (
     <>
@@ -73,16 +91,16 @@ const handleUpdate = (id: number) => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5">
             {
-             viagens.map((viagem) => (
-              viagem.id !== null && (
-                <CardViagens
-                  key={viagem.id}
-                  viagem={viagem}
-                  onDelete={handleDelete}
-                  onUpdate={handleUpdate}
-                />
-              )
-            ))
+              viagens.map((viagem) => (
+                viagem.id !== null && (
+                  <CardViagens
+                    key={viagem.id}
+                    viagem={viagem}
+                    onDelete={handleDelete}
+                    onUpdate={handleUpdate}
+                  />
+                )
+              ))
 
             }
           </div>
