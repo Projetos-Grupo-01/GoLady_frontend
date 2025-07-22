@@ -1,6 +1,6 @@
-export default interface UsuarioLgin {
-id: number;
-nome: string;
+export default interface UsuarioLogin {
+  id: number;
+  nome: string;
   usuario: string;
   senha: string;
   foto: string;

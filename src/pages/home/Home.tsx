@@ -1,13 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ListaViagens from "../../components/viagens/listaviagens/ListaViagens";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Home() {
+
+    const navigate = useNavigate()
+
+    const { usuario } = useContext(AuthContext)
+
+    useEffect(() => {
+        if (usuario.token === "") {
+            ToastAlerta('Você precisa estar logado', 'info')
+            navigate('/')
+        }
+    }, [usuario.token])
+
     return (
         <>
 
-            <div className="mt-4 relative w-full h-[400px] bg-white drop-shadow-lg overflow-hidden"> 
+            <div className="mt-4 relative w-full h-[400px] bg-white drop-shadow-lg overflow-hidden">
                 {/* div principal definida com altura fixa ou min-height (ajuste se desejar altura maior ou responsiva) */}
-                
+
                 {/* Conteúdo à esquerda */}
                 <div className="relative z-10 flex flex-col justify-center items-start h-full max-w-[50%] pl-30">
                     <h1 className="font-bold text-7xl font-Mooli mb-4">

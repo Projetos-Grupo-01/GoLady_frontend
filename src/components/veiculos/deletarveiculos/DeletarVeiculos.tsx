@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom' // Importado useParams
 import { ToastAlerta } from '../../../utils/ToastAlerta'
 import { RotatingLines } from 'react-loader-spinner'
 import type { Veiculo } from '../../../models/Veiculo'
 import { buscar, deletar } from '../../../services/Service'
+import { AuthContext } from '../../../contexts/AuthContext'
 
 function DeletarVeiculo() {
 	const navigate = useNavigate()
@@ -13,9 +14,16 @@ function DeletarVeiculo() {
 
 	const [veiculos, setVeiculo] = useState<Veiculo>({} as Veiculo)
 
+	const { usuario } = useContext(AuthContext)
+	const token = usuario.token
+
 	async function buscarVeiculoPorId(id: string) {
 		try {
-			await buscar(`/veiculos/${id}`, setVeiculo)
+			await buscar(`/veiculos/${id}`, setVeiculo, {
+				headers: {
+					Authorization: token
+				}
+			})
 		} catch (error: any) {
 			if (error.toString().includes(404)) {
 				ToastAlerta('Veículo não encontrado ou já excluído!', "erro");
@@ -31,7 +39,11 @@ function DeletarVeiculo() {
 		setIsLoading(true)
 
 		try {
-			await deletar(`/veiculos/${id}`)
+			await deletar(`/veiculos/${id}`, {
+				headers: {
+					Authorization: token
+				}
+			})
 			ToastAlerta('Veiculo excluído com sucesso!', "sucesso")
 		} catch (error: any) {
 			ToastAlerta('Houve algum erro ao carregar o veiculo!', 'erro')
@@ -45,6 +57,13 @@ function DeletarVeiculo() {
 	function retornar() {
 		navigate('/veiculos')
 	}
+
+	useEffect(() => {
+		if (token === "") {
+			ToastAlerta('Você precisa estar logado', 'info')
+			navigate('/')
+		}
+	}, [token])
 
 	useEffect(() => {
 		if (id !== undefined) {

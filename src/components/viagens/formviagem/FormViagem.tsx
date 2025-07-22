@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type { Veiculo } from "../../../models/Veiculo";
 import type { Viagem } from "../../../models/Viagem";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type { Usuario } from "../../../models/Usuario";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const FormViagem = () => {
   const navigate = useNavigate();
@@ -26,25 +27,38 @@ const FormViagem = () => {
   const [usuarios, setUsuarios] = useState<Usuario[]>([])
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
 
+  const { usuario } = useContext(AuthContext)
+  const token = usuario.token
+
   useEffect(() => {
-    buscar("/usuarios/all", setUsuarios)
-    buscar("/veiculos", setVeiculos);
+    buscar("/usuarios/all", setUsuarios, {
+      headers: {
+        Authorization: token
+      }
+    })
+    buscar("/veiculos", setVeiculos, {
+      headers: {
+        Authorization: token
+      }
+    });
 
     if (id) {
-      buscar(`/viagens/${id}`, setViagem);
+      buscar(`/viagens/${id}`, setViagem, {
+        headers: {
+          Authorization: token
+        }
+      });
     }
   }, [id]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setViagem({ ...viagem, [e.target.name]: e.target.value });
   };
- 
+
   const handleSelectUsuario = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const user = usuarios.find(u => u.id === Number(e.target.value)) || null
     setViagem({ ...viagem, usuario: user })
   }
-
-
 
   const handleSelectVeiculo = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const veic = veiculos.find((v) => v.id === Number(e.target.value)) || null;
@@ -55,10 +69,18 @@ const FormViagem = () => {
     e.preventDefault();
     try {
       if (id) {
-        await atualizar("/viagens", viagem, setViagem);
+        await atualizar("/viagens", viagem, setViagem, {
+          headers: {
+            Authorization: token
+          }
+        });
         ToastAlerta("Viagem atualizada com sucesso!", "sucesso");
       } else {
-        await cadastrar("/viagens", viagem, setViagem);
+        await cadastrar("/viagens", viagem, setViagem, {
+          headers: {
+            Authorization: token
+          }
+        });
         ToastAlerta("Viagem cadastrada com sucesso!", "sucesso");
       }
       navigate("/");
@@ -66,7 +88,13 @@ const FormViagem = () => {
       ToastAlerta("Erro ao salvar viagem", "erro");
     }
   };
-  
+
+  useEffect(() => {
+    if (token === "") {
+      ToastAlerta('Você precisa estar logado', 'info')
+      navigate('/')
+    }
+  }, [token])
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow-lg">

@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { SyncLoader } from 'react-spinners'
 import { buscar } from '../../../services/Service'
 import CardVeiculos from '../cardveiculos/CardVeiculos'
 import type { Veiculo } from '../../../models/Veiculo'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { ToastAlerta } from '../../../utils/ToastAlerta'
 
 function ListarVeiculos() {
+
+	const navigate = useNavigate()
+
+    const { usuario } = useContext(AuthContext)
+	const token = usuario.token
 	
     const [veiculos, setVeiculos] = useState<Veiculo[]>([])
 	const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -13,7 +21,11 @@ function ListarVeiculos() {
         setIsLoading(true)
 
         try{
-            await buscar('/veiculos', setVeiculos)
+            await buscar('/veiculos', setVeiculos, {
+				headers: {
+					Authorization: token
+				}
+			})
         }catch(error: any){
             console.log("Erro ao listar os Veiculos!")
         }finally{
@@ -21,6 +33,13 @@ function ListarVeiculos() {
         }
 		
 	}
+
+	useEffect(() => {
+        if (token === "") {
+            ToastAlerta('Você precisa estar logado', 'info')
+            navigate('/')
+        }
+    }, [token])
 
 	useEffect(() => {
 		buscarVeiculos()
