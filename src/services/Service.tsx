@@ -11,7 +11,7 @@ export const cadastrarUsuario = async (url: string, dados: Object, setDados: Fun
 
 export const login = async (url: string, dados: object, setDados: Function) => {
   const resposta = await api.post(url, dados);
-  setDados(resposta.data);
+  setDados(resposta.data)
 }
 
 export const buscar = async (url: string, setDados: Function, header: object) => {

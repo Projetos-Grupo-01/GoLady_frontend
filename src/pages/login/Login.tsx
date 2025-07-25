@@ -1,4 +1,3 @@
-
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
@@ -45,10 +44,10 @@ function Login() {
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center bg-[#FDF6F0]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center bg-[#D9E4DD]">
         <form
-          className="flex justify-center items-center flex-col w-1/2 gap-4"
           onSubmit={login}
+          className="form-glass w-full max-w-md p-6 rounded-xl flex flex-col gap-2"
         >
           <h2 className="text-[#001427] text-5xl text-center mb-2 font-bold">
             Login
@@ -89,8 +88,8 @@ function Login() {
           {/* Botão de login */}
           <button
             type="submit"
-            className="bg-[#7D0700] text-white cursor-pointer
-                        py-2 px-4 rounded-lg w-1/2 flex justify-center items-center transition"
+            className=" bg-[#115B69] text-white cursor-pointer
+                        py-2 px-4 rounded-lg w-1/2 mx-auto flex justify-center items-center transition"
           >
             {isLoading ? (
               <RotatingLines
@@ -111,17 +110,17 @@ function Login() {
             Ainda não tem uma conta?{" "}
             <Link
               to="/cadastro"
-              className="text-[#7D0700] hover:underline font-semibold"
+              className="text-[#115B69] hover:underline font-semibold"
             >
               <span>Criar conta</span>
             </Link>
           </p>
         </form>
         <div className="fundoLogin hidden lg:block"></div>
+        
       </div>
     </>
   );
 }
 
 export default Login;
-
