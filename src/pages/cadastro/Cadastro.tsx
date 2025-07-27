@@ -195,6 +195,7 @@ function Cadastro() {
                 className="rounded-lg p-3 border border-slate-500 bg-white"
                 value={usuario.foto}
                 onChange={atualizarEstado}
+                placeholder="Insira o link da foto"
               />
             </div>
 
