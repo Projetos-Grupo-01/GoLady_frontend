@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastAlerta } from "../../utils/ToastAlerta";
 import type { Usuario } from "../../models/Usuario";
 import { cadastrarUsuario } from "../../services/Service";
-import { InputMask } from "@react-input/mask";
 
 function Cadastro() {
   const navigate = useNavigate();
