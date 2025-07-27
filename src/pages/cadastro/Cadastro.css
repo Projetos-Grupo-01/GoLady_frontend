@@ -1,0 +1,31 @@
+.fundoCadastro {
+  background-image: url("https://ik.imagekit.io/txvje9hzw/mulher-sorridente-feliz-com-oculos-de-sol-em-um-carro%20(1).jpg?updatedAt=1753321698308");
+  background-repeat: no-repeat;
+  width: 100%;
+ height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Remoção das setas de incre/decremento no input altura e peso no Chorme, no Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* e no Firefox */
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+/* Form glassy */
+.form-glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
