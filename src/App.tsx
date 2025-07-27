@@ -13,6 +13,7 @@ import FormVeiculo from './components/veiculos/formveiculo/FormVeiculo'
 import Projeto from './pages/projeto/Projeto'
 import Login from './pages/login/Login'
 import { AuthProvider } from './contexts/AuthContext'
+import Cadastro from './pages/cadastro/Cadastro'
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
               <Route path="/sobre" element={<Sobre />} />
               <Route path="/projeto" element={<Projeto />} />
 
+              <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/login" element={<Login />} />
+              
               <Route path="/veiculos" element={<ListarVeiculos />} />
               <Route path="/deletarveiculo/:id" element={<DeletarVeiculos />} />
               <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
