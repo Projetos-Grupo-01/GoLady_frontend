@@ -88,7 +88,7 @@ function Login() {
           {/* Botão de login */}
           <button
             type="submit"
-            className=" bg-[#115B69] text-white cursor-pointer
+            className=" bg-[#115B69] hover:bg-[#115a69d8] text-white cursor-pointer m-2
                         py-2 px-4 rounded-lg w-1/2 mx-auto flex justify-center items-center transition"
           >
             {isLoading ? (

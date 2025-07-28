@@ -60,7 +60,7 @@ function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
         <div className="flex justify-between flex-wrap gap-2 mt-4">
           <button
             onClick={() => onUpdate(viagem.id!)}
-            className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-cyan-900 hover:bg-cyan-700 text-white rounded-md text-sm font-semibold"
+            className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-cyan-900 hover:bg-cyan-700 text-white rounded-md text-sm font-semibold cursor-pointer"
           >
             <PencilSimpleIcon size={20} />
             Atualizar
@@ -68,7 +68,7 @@ function CardViagens({ viagem, onDelete, onUpdate }: CardViagemProps) {
 
           <button
             onClick={() => onDelete(viagem.id!)}
-            className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-red-900 hover:bg-red-600 text-white rounded-md text-sm font-semibold"
+            className="flex-1 flex items-center justify-center gap-1 px-2 py-1 bg-red-900 hover:bg-red-600 text-white rounded-md text-sm font-semibold cursor-pointer"
           >
             <TrashIcon size={20} />
             Deletar
