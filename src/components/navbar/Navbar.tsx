@@ -1,7 +1,20 @@
-import { CarIcon, UserCircleIcon } from "@phosphor-icons/react"
-import { Link } from "react-router-dom"
+import { CarIcon, SignInIcon, SignOutIcon, UserCircleIcon } from "@phosphor-icons/react"
+import { useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { AuthContext } from "../../contexts/AuthContext"
+import { ToastAlerta } from "../../utils/ToastAlerta"
 
 function Navbar() {
+
+  const navigate = useNavigate()
+  const { usuario, handleLogout } = useContext(AuthContext)
+
+  function logout() {
+    handleLogout()
+    ToastAlerta("A Usuária foi desconectada com sucesso!", "sucesso")
+    navigate("/")
+  }
+
   return (
     <>
       <nav className="py-4 px-9 w-full flex justify-between items-center drop-shadow-xl" style={{
@@ -25,16 +38,29 @@ function Navbar() {
           <Link to="/sobre" className="text-gray-800 hover:text-[#7D0700]">
             Sobre a equipe
           </Link>
-          <Link to="/cadastrarveiculo" className="text-gray-800 hover:text-[#7D0700]">
-            Cadastrar Veículo
+
+          {usuario.id !== 0 && (
+            <>
+              <Link to="/cadastrarveiculo" className="text-gray-800 hover:text-[#7D0700]">
+                Cadastrar Veículo
+              </Link>
+
+              <Link to="/perfil" >
+                <img src={usuario.foto} alt={usuario.nome} className="rounded-full w-7 border border-gray-800 hover:border-[#7D0700]" />
+              </Link>
+              <Link to="/veiculos" className="text-gray-800 hover:text-[#7D0700]">
+                <CarIcon size={32} />
+              </Link>
+            </>
+          )}
+
+          <Link to="/login"
+             className=" hover:text-[#7D0700] py-4 px-3 flex items-center">
+            {usuario.id === 0 ?
+              <SignInIcon size={32} />
+              : <SignOutIcon size={32} onClick={logout} />}
           </Link>
 
-          <Link to="#" >
-            <UserCircleIcon size={32} className="text-gray-800 hover:text-[#7D0700]" />
-          </Link>
-          <Link to="/veiculos" className="text-gray-800 hover:text-[#7D0700]">
-            <CarIcon size={32} />
-          </Link>
         </div>
       </nav>
     </>

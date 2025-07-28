@@ -69,15 +69,17 @@ function ListaViagens() {
   return (
     <>
       {isLoading && (
-        <ColorRing
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="color-ring-loading"
-          wrapperStyle={{}}
-          wrapperClass="color-ring-wrapper"
-          colors={['#7D0700', '#FD7866', '#FAD3C4', '#BBD5CC', '#115B69']}
-        />
+        <div className="flex justify-center">
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={['#7D0700', '#FD7866', '#FAD3C4', '#BBD5CC', '#115B69']}
+          />
+        </div>
       )}
       <div className="flex justify-center w-full p-8 bg-[#d7d7d793]">
         <div className="container flex flex-col mx-2">

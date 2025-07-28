@@ -14,6 +14,7 @@ import Projeto from './pages/projeto/Projeto'
 import Login from './pages/login/Login'
 import { AuthProvider } from './contexts/AuthContext'
 import Cadastro from './pages/cadastro/Cadastro'
+import Perfil from './pages/perfil/Perfil'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
 
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/perfil" element={<Perfil />} />
               
               <Route path="/veiculos" element={<ListarVeiculos />} />
               <Route path="/deletarveiculo/:id" element={<DeletarVeiculos />} />

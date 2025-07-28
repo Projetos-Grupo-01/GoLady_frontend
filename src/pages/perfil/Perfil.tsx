@@ -1,12 +1,10 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 
 import { AuthContext } from "../../contexts/AuthContext"
-import { ToastAlerta } from "../../utils/ToastAlerta"
-import { useNavigate } from "react-router-dom"
+import { StarIcon } from "@phosphor-icons/react"
 
 
 function Perfil() {
-	const navigate = useNavigate()
 
 	const { usuario } = useContext(AuthContext)
 
@@ -25,9 +23,19 @@ function Perfil() {
 					alt={`Foto de perfil de `}
 				/>
 
-				<div className="relative mt-[-6rem] h-72 flex flex-col bg-[#bbd5cc] items-center justify-center">
-  					<p className="text-2xl font-bold text-center">Nome: {usuario?.nome}</p>
-  					<p className="text-2xl font-bold text-center">Email: {usuario?.usuario}</p>
+				<div className="relative mt-[-6rem] h-80 flex flex-col bg-[#bbd5cc] items-center justify-center">
+					<p className="text-2xl text-center pt-2.5">
+						<span className="font-bold">Nome:</span> {usuario?.nome}
+					</p>
+					<p className="text-2xl text-center">
+						<span className="font-bold">Email:</span> {usuario?.usuario}
+					</p>
+					<p className="text-2xl text-center">
+						<span className="font-bold">Telefone:</span> {usuario?.telefone}
+					</p>
+					<p className="text-2xl text-center flex gap-2">
+						<StarIcon size={32} color="#fcff2e" weight="fill"/> {usuario?.avaliacao}/5
+					</p>
 				</div>
 			</div>
 		</div>
