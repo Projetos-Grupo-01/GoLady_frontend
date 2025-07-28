@@ -19,8 +19,8 @@ function Perfil() {
 
 				<img
 					className="rounded-full w-56 mx-auto mt-[-8rem] border-8 border-white relative z-10"
-					src="https://ik.imagekit.io/spmr3qqjt/images_perfil_mulher.jpeg"
-					alt={`Foto de perfil de `}
+					src={usuario.foto}
+					alt={`Foto de perfil de ${usuario.nome}`}
 				/>
 
 				<div className="relative mt-[-6rem] h-80 flex flex-col bg-[#bbd5cc] items-center justify-center">
