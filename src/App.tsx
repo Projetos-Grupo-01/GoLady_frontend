@@ -15,14 +15,34 @@ import Login from './pages/login/Login'
 import { AuthProvider } from './contexts/AuthContext'
 import Cadastro from './pages/cadastro/Cadastro'
 import Perfil from './pages/perfil/Perfil'
+import { useState } from 'react'
+
+type MenuState = 'closed' | 'open'
 
 function App() {
+
+  const [menuState, setMenuState] = useState<MenuState>('closed')
+
+  const toggleMenu = (): void => {
+    setMenuState(prevState => prevState === 'closed' ? 'open' : 'closed')
+  }
+
+  const closeMenu = (): void => {
+    setMenuState('closed')
+  }
+
   return (
     <>
       <AuthProvider>
         <ToastContainer />
         <BrowserRouter>
-          <Navbar />
+          <div className="md:relative">
+            <Navbar 
+              menuState={menuState} // Menu Mobile aberto ou fechado?
+              onMenuToggle={toggleMenu} // Função para abrir e fechar o Menu Mobile
+              onMenuClose={closeMenu} // Função fechar o Menu Mobile (botão X)
+            />
+          </div>
           <div className="min-h-[80vh]">
             <Routes>
               <Route path="/" element={<Login />} />

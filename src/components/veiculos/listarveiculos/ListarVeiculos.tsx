@@ -60,7 +60,7 @@ function ListarVeiculos() {
 					/>
 				</div>
 			)}
-			<div className="flex justify-center w-full my-4">
+			<div className="flex justify-center w-full my-4 pt-25 md:pt-0">
 				<div className="container flex flex-col mx-4">
 					{(!isLoading && veiculos.length === 0) && (
 						<span className="my-8 text-3xl text-center">

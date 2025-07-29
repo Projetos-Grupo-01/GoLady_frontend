@@ -40,11 +40,9 @@ function Login() {
     handleLogin(usuarioLogin);
   }
 
-  console.log(JSON.stringify(usuarioLogin));
-
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center bg-[#D9E4DD]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center bg-[#D9E4DD] pt-22 md:pt-0 px-6">
         <form
           onSubmit={login}
           className="form-glass w-full max-w-md p-6 rounded-xl flex flex-col gap-2"

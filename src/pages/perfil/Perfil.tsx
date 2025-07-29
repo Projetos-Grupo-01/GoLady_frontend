@@ -10,7 +10,7 @@ function Perfil() {
 
 	return (
 		<div className="flex justify-center mx-4">
-			<div className="container mx-auto my-4 rounded-2xl overflow-hidden">
+			<div className="container mx-auto my-4 rounded-2xl overflow-hidden mt-25 md:mt-0">
 				<img
 					className="w-full h-72 object-cover border-b-8 border-white"
 					src="https://ik.imagekit.io/j8alkuh75t/FundoPerfilGolady.png?updatedAt=1753226506397"

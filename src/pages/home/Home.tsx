@@ -20,16 +20,16 @@ function Home() {
     return (
         <>
 
-            <div className="mt-4 relative w-full h-[400px] bg-white drop-shadow-lg overflow-hidden">
+            <div className="relative w-full pt-35 md:pt-25 pb-17 md:pb-17 bg-white drop-shadow-lg overflow-hidden">
                 {/* div principal definida com altura fixa ou min-height (ajuste se desejar altura maior ou responsiva) */}
 
                 {/* Conteúdo à esquerda */}
-                <div className="relative z-10 flex flex-col justify-center items-start h-full max-w-[50%] pl-30">
-                    <h1 className="font-bold text-7xl font-Mooli mb-4">
+                <div className="relative flex flex-col justify-center items-start h-full w-2/3 md:max-w-[40%] m-auto md:ml-30">
+                    <h1 className="font-bold text-6xl md:text-7xl font-Mooli mb-4">
                         <span className="text-[#115B69]">Go</span>
                         <span className="text-[#7D0700]">Lady</span>
                     </h1>
-                    <p className="text-3xl text-gray-900 mb-6 text-shadow-lg/10">
+                    <p className="text-xl md:text-3xl text-gray-900 mb-6 text-shadow-lg/10">
                         Do trabalho ao barzinho, seu trajeto em segurança!
                     </p>
                     <Link to="/viagens/formulario" className="px-8 py-3 bg-[#115B69] text-white font-semibold rounded-lg shadow-md hover:bg-[#7d0600ce] transition duration-300 cursor-pointer">
@@ -42,7 +42,7 @@ function Home() {
                 <img
                     src="/ImgCarro.png"
                     alt="Carro GoLady"
-                    className="absolute top-0 right-0 h-full w-auto object-cover"
+                    className="hidden lg:block absolute top-0 right-0 h-full w-auto object-cover"
                 />
             </div>
 

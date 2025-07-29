@@ -71,7 +71,7 @@ const ModalViagem: React.FC<ModalViagemProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center"
       style={{ backgroundColor: "rgba(0,0,0,0.6)" }}
     >
-      <div className="flex flex-col justify-between rounded-2xl overflow-hidden w-full max-w-md relative shadow-lg">
+      <div className="flex flex-col justify-between rounded-2xl overflow-hidden w-[95vw] md:w-full max-w-md relative shadow-lg">
         <header className="bg-cyan-900 text-white py-4 px-5 text-2xl font-bold text-center">
           Detalhes da Viagem
           <button
