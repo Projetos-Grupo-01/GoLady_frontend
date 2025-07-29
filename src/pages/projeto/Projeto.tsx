@@ -2,7 +2,7 @@ import { FaCarSide, FaUserFriends, FaMapMarkedAlt, FaDatabase, FaJava, FaReact, 
 
 function Projeto() {
   return (
-    <div className="text-gray-700 bg-[#c5d6d070]">
+    <div className="text-gray-700 bg-[#c5d6d070] pt-15 md:pt-0">
       
       {/* Introdução */}
       <section className="px-6 py-12 max-w-5xl mx-auto text-center flex flex-col items-center">

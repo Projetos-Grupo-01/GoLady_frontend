@@ -1,6 +1,6 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import "./Cadastro.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -80,9 +80,6 @@ function Cadastro() {
     setIsLoading(false);
   }
 
-  console.log(JSON.stringify(usuario));
-  console.log(confirmaSenha);
-
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] min-h-screen">
@@ -90,7 +87,7 @@ function Cadastro() {
         <div className="fundoCadastro hidden lg:block"></div>
 
         {/* Formulário */}
-        <div className="bg-[#D9E4DD] flex items-center justify-center px-6">
+        <div className="bg-[#D9E4DD] flex items-center justify-center px-6 pb-5 pt-25 md:pt-0">
           <form
             onSubmit={cadastrarNovousuario}
             /* Glass effect */
@@ -223,12 +220,12 @@ function Cadastro() {
             <hr className="my-3 border-[#66626279]" />
             <p className="text-center text-lg text-[#001427]">
               Já possui uma conta?{" "}
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="text-[#115B69] hover:underline font-semibold"
               >
                 Faça login
-              </a>
+              </Link>
             </p>
           </form>
         </div>

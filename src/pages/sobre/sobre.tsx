@@ -69,7 +69,7 @@ const teamMembers = [
 
 function Sobre() {
   return (
-    <section className="py-3 bg-gray-50 mb-10">
+    <section className="py-3 bg-gray-50 pb-10 pt-20 md:pt-0">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 font-Mooli mt-7">Pessoas que fizeram acontecer</h2>
         
